@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <title>Persistent GNS Client</title>
+      <link rel = "stylesheet" type = "text/css" href = "css/style.css" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+  <h2>Persistent GNS  Client</h2>
+        <form method="POST" enctype="multipart/form-data" action="/dnsrecords">
+
+            <div class="container">
+
+
+                <label><b> <p th:text="'Hello, ' + ${name} + '!'" ></b></label>
+                <br />
+
+                <label><b>A Record *</b></label>
+                <input type="text" placeholder="ip-address1, ip-address2" name="arecord" th:value="${arecord}" required/>
+
+                <label><b>NS Record</b></label>
+                <input type="text" placeholder="nameserver-host1, ip-address1, nameserver-host2, ip-address2" name="nsrecord" th:value="${nsrecord}" />
+
+                <label><b>CNAME Record</b></label>
+                <input type="text" placeholder="cname" name="cname" th:value="${cname}" />
+
+                <label><b>Fields marked with * are required</b></label>
+
+                <div class="clearfix">
+                    <button type="submit" class="signupbtn">Update</button>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+
+        </form>
+
+  </body>
+</html>

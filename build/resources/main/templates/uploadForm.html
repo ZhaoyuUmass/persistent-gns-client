@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Persistent GNS Client</title>
+	<link rel = "stylesheet" type = "text/css" href = "css/style.css" />
+</head>
+<body>
+
+<h2>Persistent GNS  Client</h2>
+
+<div>
+	<form method="POST" enctype="multipart/form-data" action="/uploadkeys">
+		<div class="container">
+			<label><b>Certificate*</b></label>
+			<br />
+			<input type="file" placeholder="Upload certificate" name="file1" required>
+			<br /> <br />
+
+			<label><b>Private key*</b></label>
+			<br />
+			<input type="file" placeholder="Upload private key" name="file2" required>
+
+			<br /> <br />
+			<div class="clearfix">
+				<button type="submit" class="signupbtn">login</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+</body>
+</html>
