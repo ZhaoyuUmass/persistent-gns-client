@@ -49,11 +49,7 @@ public class FileUploadController implements ErrorController{
     private static String certificate_file_name;
     private static String private_key_file_name;
 
-
-    @Value("${reconfigurator}")
-    private static String myVariable;
-
-    private static final String reconfigurator_hostname = "54.91.248.124";
+    private static final String reconfigurator_hostname = "127.0.0.1";
     private static GNSClient gnsClient = null;
     private static GuidEntry GUID;
 
@@ -65,12 +61,13 @@ public class FileUploadController implements ErrorController{
     private static final String A_FIELD = "A";
     private static final String NS_FIELD = "NS";
     private static final String CNAME_FIELD = "CNAME";
-    private static String DEFAULT_IP = null;
+    private static final String PATH = "/error";
+    private static final String DEFAULT_PASSWORD = "password";
 
+
+    private static String DEFAULT_IP = null;
     private static String guid_name = null;
 
-
-    private static final String PATH = "/error";
 
     @RequestMapping(value = PATH)
     public String error() {
@@ -87,9 +84,16 @@ public class FileUploadController implements ErrorController{
         this.storageService = storageService;
     }
 
-    @GetMapping("/")
-    public String listUploadedFiles(Model model) throws IOException {
 
+    /**
+     *
+     * FUnction to handle get request for url /
+     * @return outupu-template
+     * @throws IOException
+     */
+
+    @GetMapping("/")
+    public String showLandingPage() throws IOException {
         if ( certificate_file_name != null && private_key_file_name != null && gnsClient != null) {
             return "redirect:/home";
         }
@@ -97,17 +101,15 @@ public class FileUploadController implements ErrorController{
         return "redirect:/index.html";
     }
 
-    @GetMapping("/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 
-        Resource file = storageService.loadAsResource(filename);
-        return ResponseEntity
-                .ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFilename()+"\"")
-                .body(file);
-    }
-
+    /**
+     * Function to handle post request for url /makedefaultentry
+     *
+     * @param file1 certificate
+     * @param file2 private key
+     * @return success-http response
+     * @throws IOException
+     */
 
     @PostMapping("/makedefaultentry")
     public ResponseEntity<?> makeDefaultEntry(@RequestParam("file1") MultipartFile file1,
@@ -148,6 +150,13 @@ public class FileUploadController implements ErrorController{
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * Function to handle post request for the url /uploadkeys
+     * @param file1 certiifcate
+     * @param file2 privatekey
+     * @return output-template file
+     * @throws IOException while storing the file
+     */
 
     @PostMapping("/uploadkeys")
     public String handleFileUpload(@RequestParam("file1") MultipartFile file1,
@@ -178,6 +187,13 @@ public class FileUploadController implements ErrorController{
         return "redirect:/home";
     }
 
+    /**
+     * Helper function to read A records from server.
+     * @return comma separated list of A records
+     * @throws IOException
+     * @throws JSONException
+     */
+
     public static String readArecordsFromServer() throws IOException, JSONException {
 
         String outputString = "";
@@ -200,6 +216,12 @@ public class FileUploadController implements ErrorController{
     }
 
 
+    /**
+     * Helper function to read ns records from gns server
+     * @return comma separated list of ns records
+     * @throws IOException
+     * @throws JSONException
+     */
     public static String readNSrecordsFromServer() throws IOException, JSONException{
         String outputString = "";
 
@@ -222,6 +244,14 @@ public class FileUploadController implements ErrorController{
     }
 
 
+    /**
+     *
+     * Helper function read cname from server.
+     * @return cname from server
+     * @throws IOException
+     * @throws JSONException
+     */
+
     public static String readCnameFromServer() throws IOException, JSONException {
         String outputString = "";
 
@@ -237,9 +267,18 @@ public class FileUploadController implements ErrorController{
         return outputString;
     }
 
+    /**
+     * Helper  function to do a lookup for the user
+     *
+     * @param client GNSclient
+     * @param certfilename absolute path for the certificate file name
+     * @param privatekeyfilename absolute pathe for the private key file name
+     * @return guid of the user
+     */
     private static GuidEntry lookupOrCreateAccount(GNSClient client, String certfilename, String privatekeyfilename) {
         try {
-            GuidEntry guidEntry = GuidUtils.accountGuidCreateWithCertificate(client, "password", certfilename, privatekeyfilename);
+            GuidEntry guidEntry = GuidUtils.lookupOrCreateAccountGuidWithCertificate(client, certfilename,
+                    privatekeyfilename, DEFAULT_PASSWORD, true);
             return guidEntry;
         }catch (Exception e) {
             System.out.println("Exception while creating the guid");
@@ -249,8 +288,20 @@ public class FileUploadController implements ErrorController{
         }
     }
 
+
+    /**
+     *
+     *  Function to generate home page for  user.
+     * @param model placeholder to add dynamic content on static html  page
+     * @return
+     * @throws IOException
+     * @throws CertificateException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     * @throws JSONException
+     */
     @RequestMapping("/home")
-    public String home( Model model) throws IOException, FileNotFoundException,
+    public String home( Model model) throws IOException,
             CertificateException, NoSuchAlgorithmException, InvalidKeySpecException, JSONException {
 
         if ( certificate_file_name == null || private_key_file_name == null || gnsClient == null) {
@@ -280,7 +331,15 @@ public class FileUploadController implements ErrorController{
         return "homepage";
     }
 
-
+    /**
+     *
+     * Helper function to update field of guid using a gns client
+     * @param client GNS client
+     * @param guidEntry guid
+     * @param fieldName field name
+     * @param obj json object that needs to be updated
+     * @return true on success, false on failure
+     */
     public static boolean updateFieldUsingClient(GNSClient client,GuidEntry guidEntry, String fieldName, Object obj) {
         try {
             client.execute(GNSCommand.fieldUpdate(guidEntry, fieldName, obj));
@@ -293,13 +352,26 @@ public class FileUploadController implements ErrorController{
         return true;
     }
 
+
+    /**
+     * Function to handle get request for url /dnsrecords
+     *
+     * @param arecord  arecords
+     * @param nsrecord ns records
+     * @param cname cname records
+     * @return success page if update is successful, failure page if update is failure
+     * @throws IOException
+     * @throws FileNotFoundException
+     * @throws CertificateException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     */
     @RequestMapping("/dnsrecords")
     public String handleUpdateRecords(@RequestParam("arecord") String arecord,
                                       @RequestParam("nsrecord") String nsrecord,
-                                      @RequestParam("cname") String cname,Model model) throws IOException, FileNotFoundException,
+                                      @RequestParam("cname") String cname) throws IOException, FileNotFoundException,
             CertificateException, NoSuchAlgorithmException, InvalidKeySpecException {
 
-        model.addAttribute("name", "");
 
         List<String> arecords = Arrays.asList(arecord.split(","));
         JSONObject arecordObj = createArecords(arecords, TTL);
@@ -320,6 +392,10 @@ public class FileUploadController implements ErrorController{
         return "success";
     }
 
+    /**
+     * Function to clean the session and close user session
+     * @return logout template
+     */
     @RequestMapping("/logout")
     public String handleLogout(){
         storageService.deleteAll();
@@ -335,8 +411,12 @@ public class FileUploadController implements ErrorController{
         return ResponseEntity.notFound().build();
     }
 
-
-
+    /**
+     * Helper function to create A records in JSON object format from a list of ips
+     * @param ips list of ips
+     * @param ttl ttl field for these A records
+     * @return
+     */
     public static JSONObject createArecords(List<String> ips, int ttl) {
         JSONObject recordObj = new JSONObject();
         JSONArray records = new JSONArray();
@@ -355,6 +435,13 @@ public class FileUploadController implements ErrorController{
         }
         return recordObj;
     }
+
+    /**
+     * Helper function to  create NS records in JSON object from a list of ns records
+     * @param input list of ns records
+     * @param ttl ttl field for these ns records
+     * @return
+     */
 
     public static JSONObject createNSrecords(List<String> input, int ttl) {
         JSONObject recordObj = new JSONObject();

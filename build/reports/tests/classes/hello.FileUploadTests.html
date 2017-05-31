@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.015s</div>
+<div class="counter">0.012s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,12 +79,12 @@
 </thead>
 <tr>
 <td class="success">should404WhenMissingFile</td>
-<td>0.005s</td>
+<td>0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldListAllFiles</td>
-<td>0.005s</td>
+<td>0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -97,14 +97,14 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2017-05-29 12:13:33.003  INFO 10338 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [hello.FileUploadTests], using SpringBootContextLoader
-2017-05-29 12:13:33.005  INFO 10338 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [hello.FileUploadTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-2017-05-29 12:13:33.006  INFO 10338 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [hello.FileUploadTests]: FileUploadTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2017-05-29 12:13:33.030  INFO 10338 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration hello.Application for test class hello.FileUploadTests
-2017-05-29 12:13:33.034  INFO 10338 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2017-05-29 12:13:33.038  INFO 10338 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/TransactionDefinition]
-2017-05-29 12:13:33.040  INFO 10338 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
-2017-05-29 12:13:33.041  INFO 10338 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@74e0d54d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3e52df26, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@15c93d8c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2cc54f05, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5efdbd6d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@76fef27b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2a879475, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2c3c5b47, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1f998d78, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1ef5c9da]
+<pre>2017-05-31 18:56:55.233  INFO 8365 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [hello.FileUploadTests], using SpringBootContextLoader
+2017-05-31 18:56:55.235  INFO 8365 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [hello.FileUploadTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2017-05-31 18:56:55.235  INFO 8365 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [hello.FileUploadTests]: FileUploadTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2017-05-31 18:56:55.254  INFO 8365 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration hello.Application for test class hello.FileUploadTests
+2017-05-31 18:56:55.260  INFO 8365 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-05-31 18:56:55.264  INFO 8365 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/TransactionDefinition]
+2017-05-31 18:56:55.266  INFO 8365 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+2017-05-31 18:56:55.267  INFO 8365 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6245a2a0, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4fca0f32, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@23d014b3, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6c57f385, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@23c81c0d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3ce434d9, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1f32da7a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4caac9c2, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2fe19c2e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@323e27f7]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -114,27 +114,25 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v1.5.3.RELEASE)
 
-2017-05-29 12:13:33.151  INFO 10338 --- [    Test worker] hello.FileUploadTests                    : Starting FileUploadTests on tramteja with PID 10338 (started by tramteja in /media/tramteja/Windows/Users/ramteja/Documents/Spring-17/linux_work/work/per-gns-client/gs-uploading-files/complete)
-2017-05-29 12:13:33.152  INFO 10338 --- [    Test worker] hello.FileUploadTests                    : No active profile set, falling back to default profiles: default
-2017-05-29 12:13:33.159  INFO 10338 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@209370cc: startup date [Mon May 29 12:13:33 EDT 2017]; root of context hierarchy
-2017-05-29 12:13:34.044  WARN 10338 --- [    Test worker] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation is not supported on static fields: private static java.lang.String hello.FileUploadController.myVariable
-2017-05-29 12:13:34.495  INFO 10338 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2017-05-29 12:13:34.495  INFO 10338 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2017-05-29 12:13:34.813  INFO 10338 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/home]}&quot; onto public java.lang.String hello.FileUploadController.home(org.springframework.ui.Model) throws java.io.IOException,java.io.FileNotFoundException,java.security.cert.CertificateException,java.security.NoSuchAlgorithmException,java.security.spec.InvalidKeySpecException,org.json.JSONException
-2017-05-29 12:13:34.813  INFO 10338 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/],methods=[GET]}&quot; onto public java.lang.String hello.FileUploadController.listUploadedFiles(org.springframework.ui.Model) throws java.io.IOException
-2017-05-29 12:13:34.813  INFO 10338 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/files/{filename:.+}],methods=[GET]}&quot; onto public org.springframework.http.ResponseEntity&lt;org.springframework.core.io.Resource&gt; hello.FileUploadController.serveFile(java.lang.String)
-2017-05-29 12:13:34.814  INFO 10338 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/makedefaultentry],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;?&gt; hello.FileUploadController.makeDefaultEntry(org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile) throws java.io.IOException
-2017-05-29 12:13:34.814  INFO 10338 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/uploadkeys],methods=[POST]}&quot; onto public java.lang.String hello.FileUploadController.handleFileUpload(org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile) throws java.io.IOException
-2017-05-29 12:13:34.815  INFO 10338 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/dnsrecords]}&quot; onto public java.lang.String hello.FileUploadController.handleUpdateRecords(java.lang.String,java.lang.String,java.lang.String,org.springframework.ui.Model) throws java.io.IOException,java.io.FileNotFoundException,java.security.cert.CertificateException,java.security.NoSuchAlgorithmException,java.security.spec.InvalidKeySpecException
-2017-05-29 12:13:34.815  INFO 10338 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/logout]}&quot; onto public java.lang.String hello.FileUploadController.handleLogout()
-2017-05-29 12:13:34.815  INFO 10338 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public java.lang.String hello.FileUploadController.error()
-2017-05-29 12:13:34.871  INFO 10338 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2017-05-29 12:13:34.872  INFO 10338 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2017-05-29 12:13:34.897  INFO 10338 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2017-05-29 12:13:34.908  INFO 10338 --- [    Test worker] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
-2017-05-29 12:13:34.960  INFO 10338 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@209370cc: startup date [Mon May 29 12:13:33 EDT 2017]; root of context hierarchy
-2017-05-29 12:13:35.178  INFO 10338 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 682 ms
-2017-05-29 12:13:35.431  INFO 10338 --- [    Test worker] hello.FileUploadTests                    : Started FileUploadTests in 2.376 seconds (JVM running for 10.142)
+2017-05-31 18:56:55.386  INFO 8365 --- [    Test worker] hello.FileUploadTests                    : Starting FileUploadTests on tramteja with PID 8365 (started by tramteja in /media/tramteja/Windows/Users/ramteja/Documents/Spring-17/linux_work/work/demo/persistent-gns-client)
+2017-05-31 18:56:55.386  INFO 8365 --- [    Test worker] hello.FileUploadTests                    : No active profile set, falling back to default profiles: default
+2017-05-31 18:56:55.389  INFO 8365 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@1c46bac0: startup date [Wed May 31 18:56:55 EDT 2017]; root of context hierarchy
+2017-05-31 18:56:56.421  INFO 8365 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2017-05-31 18:56:56.422  INFO 8365 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2017-05-31 18:56:56.654  INFO 8365 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/home]}&quot; onto public java.lang.String hello.FileUploadController.home(org.springframework.ui.Model) throws java.io.IOException,java.security.cert.CertificateException,java.security.NoSuchAlgorithmException,java.security.spec.InvalidKeySpecException,org.json.JSONException
+2017-05-31 18:56:56.654  INFO 8365 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/],methods=[GET]}&quot; onto public java.lang.String hello.FileUploadController.showLandingPage() throws java.io.IOException
+2017-05-31 18:56:56.655  INFO 8365 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/makedefaultentry],methods=[POST]}&quot; onto public org.springframework.http.ResponseEntity&lt;?&gt; hello.FileUploadController.makeDefaultEntry(org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile) throws java.io.IOException
+2017-05-31 18:56:56.655  INFO 8365 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/uploadkeys],methods=[POST]}&quot; onto public java.lang.String hello.FileUploadController.handleFileUpload(org.springframework.web.multipart.MultipartFile,org.springframework.web.multipart.MultipartFile) throws java.io.IOException
+2017-05-31 18:56:56.656  INFO 8365 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/dnsrecords]}&quot; onto public java.lang.String hello.FileUploadController.handleUpdateRecords(java.lang.String,java.lang.String,java.lang.String) throws java.io.IOException,java.io.FileNotFoundException,java.security.cert.CertificateException,java.security.NoSuchAlgorithmException,java.security.spec.InvalidKeySpecException
+2017-05-31 18:56:56.656  INFO 8365 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/logout]}&quot; onto public java.lang.String hello.FileUploadController.handleLogout()
+2017-05-31 18:56:56.657  INFO 8365 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public java.lang.String hello.FileUploadController.error()
+2017-05-31 18:56:56.714  INFO 8365 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-31 18:56:56.714  INFO 8365 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-31 18:56:56.759  INFO 8365 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-31 18:56:56.767  INFO 8365 --- [    Test worker] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2017-05-31 18:56:56.813  INFO 8365 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@1c46bac0: startup date [Wed May 31 18:56:55 EDT 2017]; root of context hierarchy
+2017-05-31 18:56:56.999  INFO 8365 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 577 ms
+2017-05-31 18:56:57.175  INFO 8365 --- [    Test worker] hello.FileUploadTests                    : Started FileUploadTests in 1.893 seconds (JVM running for 9.058)
 </pre>
 </span>
 </div>
@@ -146,7 +144,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 2.10</a> at May 29, 2017 12:13:35 PM</p>
+<a href="http://www.gradle.org">Gradle 2.10</a> at May 31, 2017 6:56:57 PM</p>
 </div>
 </div>
 </body>

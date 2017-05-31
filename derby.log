@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed May 31 18:57:44 EDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-015c-60ba-a97b-00000d2c5350 
+on database directory /media/tramteja/Windows/Users/ramteja/Documents/Spring-17/linux_work/work/demo/persistent-gns-client/clientKeyDB with class loader org.springframework.boot.loader.LaunchedURLClassLoader@816f27d 
+Loaded from jar:file:/media/tramteja/Windows/Users/ramteja/Documents/Spring-17/linux_work/work/demo/persistent-gns-client/build/libs/gs-uploading-files-0.1.0.jar!/BOOT-INF/lib/GNSClient.jar!/
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_131-8u131-b11-0ubuntu1.16.04.2-b11
+user.dir=/media/tramteja/Windows/Users/ramteja/Documents/Spring-17/linux_work/work/demo/persistent-gns-client
+os.name=Linux
+os.arch=amd64
+os.version=4.8.0-52-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
