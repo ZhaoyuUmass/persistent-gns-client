@@ -31,7 +31,10 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -49,7 +52,7 @@ public class FileUploadController implements ErrorController{
     private static String certificate_file_name;
     private static String private_key_file_name;
 
-    private static final String reconfigurator_hostname = "127.0.0.1";
+    private static String reconfigurator_hostname = null;
     private static GNSClient gnsClient = null;
     private static GuidEntry GUID;
 
@@ -67,7 +70,6 @@ public class FileUploadController implements ErrorController{
 
     private static String DEFAULT_IP = null;
     private static String guid_name = null;
-
 
     @RequestMapping(value = PATH)
     public String error() {
@@ -87,7 +89,7 @@ public class FileUploadController implements ErrorController{
 
     /**
      *
-     * FUnction to handle get request for url /
+     * Function to handle get request for url /
      * @return outupu-template
      * @throws IOException
      */
@@ -122,6 +124,11 @@ public class FileUploadController implements ErrorController{
         String cert_path= System.getProperty("user.dir") + "/upload-dir/" + file1.getOriginalFilename();
         String private_key_path = System.getProperty("user.dir") + "/upload-dir/" + file2.getOriginalFilename();
 
+        if(reconfigurator_hostname == null) {
+            if(  read_reconfigurator_hostname() == 0)
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
         GNSClient client = new GNSClient(reconfigurator_hostname);
         client.setForceCoordinatedReads(true);
 
@@ -151,6 +158,28 @@ public class FileUploadController implements ErrorController{
     }
 
     /**
+     *   Function to read reconfigurator ip from propertiesfile
+     *   @return 1 on success, 0 on failure
+    */
+
+    public static int read_reconfigurator_hostname() {
+        Properties prop = new Properties();
+        InputStream input = null;
+
+        try {
+            input = new FileInputStream("config.properties");
+            prop.load(input);
+            System.out.println(prop.getProperty("ip"));
+            reconfigurator_hostname = prop.getProperty("ip");
+        }
+        catch(Exception e) {
+            System.out.println("Unexpected exception while reading properties file");
+            return 0;
+        }
+        return 1;
+    }
+
+    /**
      * Function to handle post request for the url /uploadkeys
      * @param file1 certiifcate
      * @param file2 privatekey
@@ -174,12 +203,16 @@ public class FileUploadController implements ErrorController{
 
             if(gnsClient == null) {
                 System.out.println(reconfigurator_hostname);
+                if(reconfigurator_hostname == null) {
+                    if(  read_reconfigurator_hostname() == 0)
+                        return "unknown-error";
+                }
                 gnsClient = new GNSClient(reconfigurator_hostname);
                 gnsClient.setForceCoordinatedReads(true);
             }
 
         }catch (Exception e) {
-            System.out.println("Unknown exception occured while uploading the credentials ");
+            System.out.println("Unexpected exception occured while uploading the credentials ");
             e.printStackTrace();
             return "unknown-error";
         }
